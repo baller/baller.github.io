@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"sifl.qzz.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="纯命令在Linux上使用Clash VergeClash是一款强大的代理工具，广泛用于科学上网和网络请求的管理。本文将详细介绍如何在Linux上通过命令行运行Clash。 1. 安装Clash Verge首先，你需要在Linux上安装Clash。可以通过以下步骤完成安装： 1.1 下载Clash Verge前往Clash Verge的GitHub页面下载最新版本的Clash。你可以使用wget命令">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux服务器使用Clash verge 教程">
+<meta property="og:url" content="http://sifl.qzz.io/2024/09/13/Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8Clash-verge-%E6%95%99%E7%A8%8B/index.html">
+<meta property="og:site_name" content="SiFL&#39;Blog">
+<meta property="og:description" content="纯命令在Linux上使用Clash VergeClash是一款强大的代理工具，广泛用于科学上网和网络请求的管理。本文将详细介绍如何在Linux上通过命令行运行Clash。 1. 安装Clash Verge首先，你需要在Linux上安装Clash。可以通过以下步骤完成安装： 1.1 下载Clash Verge前往Clash Verge的GitHub页面下载最新版本的Clash。你可以使用wget命令">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-09-13T13:06:10.000Z">
+<meta property="article:modified_time" content="2025-08-13T13:11:10.860Z">
+<meta property="article:author" content="SiFL">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://sifl.qzz.io/2024/09/13/Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8Clash-verge-%E6%95%99%E7%A8%8B/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Linux服务器使用Clash verge 教程 | SiFL'Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">SiFL'Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/aboutme/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://sifl.qzz.io/2024/09/13/Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%BF%E7%94%A8Clash-verge-%E6%95%99%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="SiFL">
+      <meta itemprop="description" content="菜鸟的成长之路！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SiFL'Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Linux服务器使用Clash verge 教程
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2024-09-13 21:06:10" itemprop="dateCreated datePublished" datetime="2024-09-13T21:06:10+08:00">2024-09-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-08-13 21:11:10" itemprop="dateModified" datetime="2025-08-13T21:11:10+08:00">2025-08-13</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        
+          <h1 id="纯命令在Linux上使用Clash-Verge"><a href="#纯命令在Linux上使用Clash-Verge" class="headerlink" title="纯命令在Linux上使用Clash Verge"></a>纯命令在Linux上使用Clash Verge</h1><p>Clash是一款强大的代理工具，广泛用于科学上网和网络请求的管理。本文将详细介绍如何在Linux上通过命令行运行Clash。</p>
+<h2 id="1-安装Clash-Verge"><a href="#1-安装Clash-Verge" class="headerlink" title="1. 安装Clash Verge"></a>1. 安装Clash Verge</h2><p>首先，你需要在Linux上安装Clash。可以通过以下步骤完成安装：</p>
+<h3 id="1-1-下载Clash-Verge"><a href="#1-1-下载Clash-Verge" class="headerlink" title="1.1 下载Clash Verge"></a>1.1 下载Clash Verge</h3><p>前往<a target="_blank" rel="noopener" href="https://github.com/zzzgydi/clash-verge/releases">Clash Verge的GitHub页面</a>下载最新版本的Clash。你可以使用<code>wget</code>命令直接下载：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/zzzgydi/clash-verge/releases/download/v1.3.8/Clash.Verge.aarch64.app.tar.gz</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="1-2-解压并移动到合适的目录"><a href="#1-2-解压并移动到合适的目录" class="headerlink" title="1.2 解压并移动到合适的目录"></a>1.2 解压并移动到合适的目录</h3><p>下载完成后，解压文件并将其移动到<code>/usr/local/bin</code>目录：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gunzip Clash.Verge.aarch64.app.tar.gz</span><br><span class="line"><span class="built_in">sudo</span> <span class="built_in">mv</span> Clash.Verge.aarch64 /usr/local/bin/clash</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-3-赋予执行权限"><a href="#1-3-赋予执行权限" class="headerlink" title="1.3 赋予执行权限"></a>1.3 赋予执行权限</h3><p>接下来，为Clash赋予执行权限：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> <span class="built_in">chmod</span> +x /usr/local/bin/clash</span><br></pre></td></tr></table></figure>
+<p>Clash 运行时需要 Country.mmdb 文件，当第一次启动 Clash 时（使用 .&#x2F;clash 命令） 会自动下载（会下载至 &#x2F;home&#x2F;XXX&#x2F;.config&#x2F;clash 文件夹下）。自动下载可能会因网络原因较慢，可以访问<a target="_blank" rel="noopener" href="https://github.com/Dreamacro/maxmind-geoip/releases">该链接</a>手动下载。</p>
+<h2 id="2-配置Clash-Verge"><a href="#2-配置Clash-Verge" class="headerlink" title="2. 配置Clash Verge"></a>2. 配置Clash Verge</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -o /home/xxx/.config/clash/config.yaml <span class="string">&#x27;订阅链接&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>直接复制windows下的config时要注意把其中的hysteria2全部替换为socks5</p>
+<h2 id="3-Clash-as-a-daemon"><a href="#3-Clash-as-a-daemon" class="headerlink" title="3. Clash as a daemon"></a>3. Clash as a daemon</h2><p>将 Clash 转变为系统服务，从而使得 Clash 实现常驻后台运行、开机自启动等。</p>
+<blockquote>
+<p>普通用户需要 <code>sudo</code> 权限。</p>
+</blockquote>
+<h3 id="3-1-配置-systemd-服务"><a href="#3-1-配置-systemd-服务" class="headerlink" title="3.1 配置 systemd 服务"></a>3.1 配置 systemd 服务</h3><p>创建 systemd 服务配置文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> vim /etc/systemd/system/clash.service</span><br></pre></td></tr></table></figure>
+
+<p>在文件中添加以下内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=Clash daemon, A rule-based proxy in Go.</span><br><span class="line">After=network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=simple</span><br><span class="line">Restart=always</span><br><span class="line">ExecStart=/usr/local/bin/clash/clash -d /home/xxx/.config/clash</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-2-使用-systemctl"><a href="#3-2-使用-systemctl" class="headerlink" title="3.2 使用 systemctl"></a>3.2 使用 systemctl</h3><p>使用以下命令，让 Clash 开机自启动：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl <span class="built_in">enable</span> clash</span><br></pre></td></tr></table></figure>
+
+<p>然后开启 Clash：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl start clash</span><br></pre></td></tr></table></figure>
+
+<p>查看 Clash 日志：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl status clash</span><br><span class="line"><span class="built_in">sudo</span> journalctl -xe</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-使用代理"><a href="#4-使用代理" class="headerlink" title="4. 使用代理"></a>4. 使用代理</h2><h3 id="4-1-利用-Export-命令使用代理"><a href="#4-1-利用-Export-命令使用代理" class="headerlink" title="4.1 利用 Export 命令使用代理"></a>4.1 利用 <code>Export</code> 命令使用代理</h3><p>Clash 运行后，其在后台监听某一端口。Ubuntu 下使用代理，需要 <code>export</code> 命令。根据 config 配置文可以查看到Clash代理端口（订阅转换后，端口为7890），设置系统代理命令为：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890</span><br></pre></td></tr></table></figure>
+
+<p>可以将该命令添加到 <code>.bashrc</code> 中，登陆后该用户自动开启代理。</p>
+<p>取消系统代理：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">unset</span> http_proxy https_proxy all_proxy</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-2-DashBoard-外部控制"><a href="#4-2-DashBoard-外部控制" class="headerlink" title="4.2 DashBoard 外部控制"></a>4.2 DashBoard 外部控制</h3><p>外部控制端口为 9090，因此也可以访问该<a target="_blank" rel="noopener" href="http://clash.razord.top/">链接</a>，输入 IP 地址（需本机可以访问的 IP）以及端口号 9090，来进入 Clash Dashboard 进行节点的选择。也可以在服务器自行搭建 Clash Dashboard，请参见<a target="_blank" rel="noopener" href="https://github.com/Dreamacro/clash-dashboard">该项目</a>。不过 Clash Dashboard 用处不大，使用<strong>订阅转换</strong>后的配置文件包含了自动选择的功能，Clash 会自动选择延迟最低的节点。</p>
+<h3 id="4-3-设置密码"><a href="#4-3-设置密码" class="headerlink" title="4.3 设置密码"></a>4.3 设置密码</h3><p><code>export</code> 命令其他用户执行后也可以使用该代理，此时通过可以更换代理端口、添加密码等措施加以限制。修改 <code>/etc/clash/config.yaml</code> 文件部分配置：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">mixed-port:</span> <span class="number">7890</span></span><br><span class="line"><span class="attr">authentication:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">&quot;用户名1:密码1&quot;</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">&quot;用户名2:密码2&quot;</span></span><br><span class="line"><span class="attr">allow-lan:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">mode:</span> <span class="string">Rule</span></span><br><span class="line"><span class="attr">log-level:</span> <span class="string">info</span></span><br><span class="line"><span class="attr">external-controller:</span> <span class="string">:9090</span></span><br></pre></td></tr></table></figure>
+
+<p><code>mixed-port: 7890</code> 就是混合代理端口，即使用代理时所指定的端口。然后需要重启 Clash，命令为：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl restart clash</span><br></pre></td></tr></table></figure>
+
+<p>根据上述配置文件，<code>export</code> 命令变为：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> https_proxy=http://用户名1:密码1@127.0.0.1:7890 http_proxy=http://用户名1:密码1@127.0.0.1:7890 all_proxy=socks5://用户名1:密码1@127.0.0.1:7890</span><br></pre></td></tr></table></figure>
+
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>本篇博客参考了<a target="_blank" rel="noopener" href="https://codeswift.top/posts/linux-clash/">在 Linux 中使用 Clash | CodeSwift</a>。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BA%AF%E5%91%BD%E4%BB%A4%E5%9C%A8Linux%E4%B8%8A%E4%BD%BF%E7%94%A8Clash-Verge"><span class="nav-number">1.</span> <span class="nav-text">纯命令在Linux上使用Clash Verge</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%AE%89%E8%A3%85Clash-Verge"><span class="nav-number">1.1.</span> <span class="nav-text">1. 安装Clash Verge</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-%E4%B8%8B%E8%BD%BDClash-Verge"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1 下载Clash Verge</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-%E8%A7%A3%E5%8E%8B%E5%B9%B6%E7%A7%BB%E5%8A%A8%E5%88%B0%E5%90%88%E9%80%82%E7%9A%84%E7%9B%AE%E5%BD%95"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.2 解压并移动到合适的目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-%E8%B5%8B%E4%BA%88%E6%89%A7%E8%A1%8C%E6%9D%83%E9%99%90"><span class="nav-number">1.1.3.</span> <span class="nav-text">1.3 赋予执行权限</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E9%85%8D%E7%BD%AEClash-Verge"><span class="nav-number">1.2.</span> <span class="nav-text">2. 配置Clash Verge</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Clash-as-a-daemon"><span class="nav-number">1.3.</span> <span class="nav-text">3. Clash as a daemon</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E9%85%8D%E7%BD%AE-systemd-%E6%9C%8D%E5%8A%A1"><span class="nav-number">1.3.1.</span> <span class="nav-text">3.1 配置 systemd 服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E4%BD%BF%E7%94%A8-systemctl"><span class="nav-number">1.3.2.</span> <span class="nav-text">3.2 使用 systemctl</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E4%BD%BF%E7%94%A8%E4%BB%A3%E7%90%86"><span class="nav-number">1.4.</span> <span class="nav-text">4. 使用代理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-%E5%88%A9%E7%94%A8-Export-%E5%91%BD%E4%BB%A4%E4%BD%BF%E7%94%A8%E4%BB%A3%E7%90%86"><span class="nav-number">1.4.1.</span> <span class="nav-text">4.1 利用 Export 命令使用代理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-DashBoard-%E5%A4%96%E9%83%A8%E6%8E%A7%E5%88%B6"><span class="nav-number">1.4.2.</span> <span class="nav-text">4.2 DashBoard 外部控制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-%E8%AE%BE%E7%BD%AE%E5%AF%86%E7%A0%81"><span class="nav-number">1.4.3.</span> <span class="nav-text">4.3 设置密码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">1.5.</span> <span class="nav-text">参考</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="SiFL"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">SiFL</p>
+  <div class="site-description" itemprop="description">菜鸟的成长之路！</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">1</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">SiFL</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
