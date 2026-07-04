@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Linux 服务器 dpkg 报错问题解决 | Liang Sifang</title>
+  <meta name="description" content="Ubuntu openssh-server post-installation 脚本错误导致 apt/dpkg 退出码异常的排查与解决记录。">
+  <link rel="canonical" href="https://baller.github.io/blog/linux-dpkg/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;450;500;600;650;700;750;800&family=Noto+Sans+SC:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="nav-shell">
+      <a class="brand" href="/"><span class="brand-mark">LS</span><span>Liang Sifang</span></a>
+      <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+      <nav class="nav-links" aria-label="Primary navigation"><a href="/">Home</a><a href="/projects/">Projects</a><a href="/blog/" aria-current="page">Blog</a><a href="/cv/">CV</a><a href="https://github.com/baller">GitHub</a></nav>
+    </div>
+  </header>
+  <article class="article reveal">
+    <p class="meta">2025-10-16 · Engineering Notes</p>
+    <h1>Linux 服务器 dpkg 报错问题解决</h1>
+    <p>这是一篇从旧博客迁移来的工程笔记，记录 Ubuntu 系统中 openssh-server 的 post-installation 脚本异常，导致 apt 和 dpkg 操作返回非零退出码的问题。</p>
+    <h2>问题背景</h2>
+    <p>执行 <code>sudo apt install</code>、<code>sudo dpkg --configure -a</code> 等命令时，系统在配置 openssh-server 阶段报错。SSH 服务本身处于正常运行状态，但安装脚本调用 <code>invoke-rc.d</code> 时返回失败，导致 dpkg 认为软件包配置失败。</p>
+    <pre><code>Setting up openssh-server ...
+invoke-rc.d: initscript ssh, action "restart" failed.
+dpkg: 处理软件包 openssh-server (--configure)时出错</code></pre>
+    <h2>排查思路</h2>
+    <p>首先通过 <code>systemctl status ssh</code> 确认 SSH 服务实际正常。随后检查 <code>/var/lib/dpkg/info/openssh-server.postinst</code>，定位到脚本末尾调用 <code>invoke-rc.d ssh $_dh_action</code> 的位置。</p>
+    <h2>临时修复</h2>
+    <p>在确认 SSH 服务正常、问题集中在安装脚本返回码后，可以在对应调用后追加 <code>|| true</code>，避免 dpkg 因该步骤的非零退出码中断。</p>
+    <pre><code>invoke-rc.d ssh $_dh_action || true
+sudo dpkg --configure -a
+sudo apt install -f</code></pre>
+    <p>这类修复适合作为服务器维护时的排障记录。实际操作前仍应根据当前系统状态确认服务和脚本内容。</p>
+  </article>
+  <footer class="footer"><div class="container"><span>© 2026 Liang Sifang</span><span><a href="/blog/">Back to Blog</a></span></div></footer>
+  <script src="/assets/js/main.js"></script>
+</body>
+</html>
