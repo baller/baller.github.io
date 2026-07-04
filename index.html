@@ -1,271 +1,724 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
+<!doctype html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 7.3.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
-
-<link rel="stylesheet" href="/css/main.css">
-
-
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
-
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"baller.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
-  </script>
-
-  <meta name="description" content="菜鸟的成长之路！">
-<meta property="og:type" content="website">
-<meta property="og:title" content="SiFL&#39;Blog">
-<meta property="og:url" content="https://baller.github.io/index.html">
-<meta property="og:site_name" content="SiFL&#39;Blog">
-<meta property="og:description" content="菜鸟的成长之路！">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:author" content="SiFL">
-<meta name="twitter:card" content="summary">
-
-<link rel="canonical" href="https://baller.github.io/">
-
-
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : true,
-    isPost : false,
-    lang   : 'zh-CN'
-  };
-</script>
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>SiFL -- 3D Creator</title>
-  
-
-
-
-
-
-
-  <noscript>
+  <meta name="description" content="A dark 3D creator portfolio for SiFL, built as a standalone GitHub Pages landing page.">
+  <meta property="og:title" content="SiFL -- 3D Creator">
+  <meta property="og:description" content="A 3D creator portfolio landing page with motion, services, and project work.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://baller.github.io/">
+  <link rel="canonical" href="https://baller.github.io/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
+    :root {
+      --bg: #0c0c0c;
+      --ink: #d7e2ea;
+      --muted: rgba(215, 226, 234, .68);
+      --soft: #bbccd7;
+      --line: rgba(215, 226, 234, .92);
+      --paper: #fbfbfa;
+      --paper-ink: #0c0c0c;
+      --ease: cubic-bezier(.25, .1, .25, 1);
+    }
 
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
+    html {
+      min-height: 100%;
+      background: var(--bg);
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100%;
+      overflow-x: clip;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Kanit", sans-serif;
+      text-rendering: geometricPrecision;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .page {
+      min-height: 100dvh;
+      overflow-x: clip;
+      background:
+        radial-gradient(circle at 48% 18%, rgba(118, 33, 176, .16), transparent 28rem),
+        radial-gradient(circle at 12% 88%, rgba(190, 76, 0, .11), transparent 24rem),
+        var(--bg);
+    }
+
+    .hero-heading {
+      background: linear-gradient(180deg, #646973 0%, #bbccd7 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+    }
+
+    .hero {
+      position: relative;
+      display: flex;
+      min-height: 100dvh;
+      flex-direction: column;
+      overflow: clip;
+      background: var(--bg);
+    }
+
+    .nav {
+      position: relative;
+      z-index: 30;
+      display: flex;
+      justify-content: space-between;
+      gap: clamp(1rem, 4vw, 4rem);
+      padding: clamp(1.5rem, 3vw, 2rem) clamp(1.5rem, 5vw, 2.5rem) 0;
+    }
+
+    .nav a {
+      color: var(--ink);
+      font-size: clamp(.875rem, 1.55vw, 1.4rem);
+      font-weight: 500;
+      line-height: 1;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      transition: opacity .2s ease, transform .2s ease;
+    }
+
+    .nav a:hover {
+      opacity: .7;
+      transform: translateY(-1px);
+    }
+
+    .nav a:focus-visible,
+    .contact-button:focus-visible,
+    .live-button:focus-visible {
+      outline: 2px solid var(--ink);
+      outline-offset: 5px;
+    }
+
+    .hero-title-wrap {
+      position: relative;
+      z-index: 20;
+      width: 100%;
+      margin-top: clamp(-1.25rem, -1vw, 1.5rem);
+      overflow: hidden;
+    }
+
+    .hero-title {
+      width: 100%;
+      font-size: clamp(4.8rem, 15vw, 17.5vw);
+      font-weight: 900;
+      line-height: .82;
+      letter-spacing: 0;
+      text-align: center;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .portrait {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      z-index: 10;
+      width: clamp(280px, 43vw, 520px);
+      translate: -50% -50%;
+      will-change: transform;
+    }
+
+    .portrait img {
+      width: 100%;
+      height: auto;
+      filter: drop-shadow(0 34px 70px rgba(0, 0, 0, .42));
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .hero-bottom {
+      position: relative;
+      z-index: 25;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 2rem;
+      margin-top: auto;
+      padding: 0 clamp(1.5rem, 5vw, 2.5rem) clamp(1.75rem, 5vw, 2.5rem);
+    }
+
+    .kicker {
+      max-width: clamp(160px, 22vw, 260px);
+      color: var(--ink);
+      font-size: clamp(.75rem, 1.4vw, 1.5rem);
+      font-weight: 300;
+      line-height: 1.18;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      text-wrap: balance;
+    }
+
+    .contact-button {
+      display: inline-flex;
+      min-height: 3rem;
+      align-items: center;
+      justify-content: center;
+      padding: clamp(.75rem, 1.3vw, 1rem) clamp(2rem, 4vw, 3rem);
+      border-radius: 999px;
+      color: #fff;
+      background: linear-gradient(123deg, #18011f 7%, #b600a8 37%, #7621b0 72%, #be4c00 100%);
+      box-shadow: 0 4px 4px rgba(181, 1, 167, .25), 4px 4px 12px #7721b1 inset;
+      font-size: clamp(.75rem, 1.2vw, 1rem);
+      font-weight: 500;
+      letter-spacing: .12em;
+      line-height: 1;
+      outline: 2px solid #fff;
+      outline-offset: -3px;
+      text-transform: uppercase;
+      transition: transform .22s ease, filter .22s ease;
+      white-space: nowrap;
+    }
+
+    .contact-button:hover {
+      filter: brightness(1.08);
+      transform: translateY(-2px);
+    }
+
+    .contact-button:active {
+      transform: translateY(1px) scale(.98);
+    }
+
+    .marquee {
+      display: flex;
+      flex-direction: column;
+      gap: .75rem;
+      padding: clamp(6rem, 11vw, 10rem) 0 2.5rem;
+      overflow: hidden;
+      background: var(--bg);
+    }
+
+    .marquee-row {
+      display: flex;
+      width: max-content;
+      gap: .75rem;
+      will-change: transform;
+    }
+
+    .marquee-row img {
+      flex: 0 0 auto;
+      width: min(420px, 72vw);
+      height: clamp(180px, 28vw, 270px);
+      border-radius: 1rem;
+      background: #171717;
+      object-fit: cover;
+    }
+
+    .about {
+      position: relative;
+      display: grid;
+      min-height: 100dvh;
+      place-items: center;
+      overflow: clip;
+      padding: 5rem clamp(1.25rem, 4vw, 2.5rem);
+      background: var(--bg);
+    }
+
+    .about-inner {
+      position: relative;
+      z-index: 5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: clamp(2.5rem, 5vw, 4rem);
+      text-align: center;
+    }
+
+    .section-title {
+      font-size: clamp(3rem, 12vw, 10rem);
+      font-weight: 900;
+      line-height: .85;
+      letter-spacing: 0;
+      text-align: center;
+      text-transform: uppercase;
+      text-wrap: balance;
+    }
+
+    .animated-text {
+      max-width: 560px;
+      color: var(--ink);
+      font-size: clamp(1rem, 2vw, 1.35rem);
+      font-weight: 500;
+      line-height: 1.7;
+      text-align: center;
+    }
+
+    .char {
+      opacity: .2;
+      transition: opacity .08s linear;
+    }
+
+    .deco {
+      position: absolute;
+      z-index: 1;
+      filter: drop-shadow(0 24px 40px rgba(0, 0, 0, .34));
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .deco-moon {
+      top: 4%;
+      left: 4%;
+      width: clamp(120px, 16vw, 210px);
+    }
+
+    .deco-object {
+      bottom: 8%;
+      left: 10%;
+      width: clamp(100px, 14vw, 180px);
+    }
+
+    .deco-lego {
+      top: 4%;
+      right: 4%;
+      width: clamp(120px, 16vw, 210px);
+    }
+
+    .deco-group {
+      right: 10%;
+      bottom: 8%;
+      width: clamp(130px, 17vw, 220px);
+    }
+
+    .services {
+      position: relative;
+      z-index: 2;
+      padding: clamp(5rem, 10vw, 8rem) clamp(1.25rem, 4vw, 2.5rem);
+      border-radius: clamp(40px, 6vw, 60px) clamp(40px, 6vw, 60px) 0 0;
+      background: var(--paper);
+      color: var(--paper-ink);
+    }
+
+    .section-title-dark {
+      margin-bottom: clamp(4rem, 8vw, 7rem);
+      color: var(--paper-ink);
+    }
+
+    .service-list {
+      max-width: 64rem;
+      margin: 0 auto;
+    }
+
+    .service {
+      display: grid;
+      grid-template-columns: minmax(7rem, .5fr) 1fr;
+      align-items: center;
+      gap: clamp(1.5rem, 5vw, 4rem);
+      padding: clamp(2rem, 4vw, 3rem) 0;
+      border-top: 1px solid rgba(12, 12, 12, .15);
+    }
+
+    .service:last-child {
+      border-bottom: 1px solid rgba(12, 12, 12, .15);
+    }
+
+    .service-number {
+      color: var(--paper-ink);
+      font-size: clamp(3rem, 10vw, 8.75rem);
+      font-weight: 900;
+      line-height: .85;
+      letter-spacing: 0;
+    }
+
+    .service h3 {
+      margin: 0 0 .8rem;
+      color: var(--paper-ink);
+      font-size: clamp(1rem, 2.2vw, 2.1rem);
+      font-weight: 500;
+      line-height: 1.05;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    .service p {
+      max-width: 42rem;
+      color: rgba(12, 12, 12, .6);
+      font-size: clamp(.85rem, 1.6vw, 1.25rem);
+      font-weight: 300;
+      line-height: 1.65;
+    }
+
+    .projects {
+      position: relative;
+      z-index: 5;
+      margin-top: clamp(-3.5rem, -5vw, -2.5rem);
+      padding: clamp(6rem, 10vw, 8rem) clamp(1rem, 4vw, 2.5rem) 5rem;
+      border-radius: clamp(40px, 6vw, 60px) clamp(40px, 6vw, 60px) 0 0;
+      background: var(--bg);
+    }
+
+    .project-stack {
+      max-width: 76rem;
+      margin: clamp(3.5rem, 7vw, 6rem) auto 0;
+    }
+
+    .project-frame {
+      position: relative;
+      height: 85vh;
+      min-height: 680px;
+    }
+
+    .project-card {
+      position: sticky;
+      top: clamp(6rem, 12vw, 8rem);
+      min-height: 560px;
+      padding: clamp(1rem, 2vw, 2rem);
+      border: 2px solid var(--line);
+      border-radius: clamp(40px, 6vw, 60px);
+      background: var(--bg);
+      color: var(--ink);
+      transform-origin: top center;
+      will-change: transform;
+    }
+
+    .project-card[data-index="1"] {
+      top: calc(clamp(6rem, 12vw, 8rem) + 28px);
+    }
+
+    .project-card[data-index="2"] {
+      top: calc(clamp(6rem, 12vw, 8rem) + 56px);
+    }
+
+    .project-top {
+      display: grid;
+      grid-template-columns: auto auto minmax(0, 1fr) auto;
+      align-items: center;
+      gap: clamp(1rem, 2vw, 2rem);
+      margin-bottom: clamp(1rem, 3vw, 2rem);
+    }
+
+    .project-number {
+      font-size: clamp(3rem, 10vw, 8.75rem);
+      font-weight: 900;
+      line-height: .85;
+    }
+
+    .project-label {
+      color: var(--muted);
+      font-size: clamp(.85rem, 1.25vw, 1.05rem);
+      font-weight: 500;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .project-top h3 {
+      font-size: clamp(1.4rem, 4vw, 4.8rem);
+      font-weight: 700;
+      line-height: .95;
+      text-transform: uppercase;
+      text-wrap: balance;
+    }
+
+    .live-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: clamp(.75rem, 1.2vw, .9rem) clamp(1.6rem, 3vw, 2.5rem);
+      border: 2px solid var(--ink);
+      border-radius: 999px;
+      color: var(--ink);
+      font-size: clamp(.78rem, 1.2vw, 1rem);
+      font-weight: 500;
+      letter-spacing: .14em;
+      line-height: 1;
+      text-transform: uppercase;
+      transition: background .22s ease, transform .22s ease;
+      white-space: nowrap;
+    }
+
+    .live-button:hover {
+      background: rgba(215, 226, 234, .1);
+      transform: translateY(-2px);
+    }
+
+    .live-button:active {
+      transform: translateY(1px) scale(.98);
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+      gap: clamp(.75rem, 1.5vw, 1.25rem);
+    }
+
+    .project-grid > div {
+      display: grid;
+      gap: clamp(.75rem, 1.5vw, 1.25rem);
+    }
+
+    .project-grid img {
+      width: 100%;
+      height: 100%;
+      border-radius: clamp(28px, 5vw, 54px);
+      background: #171717;
+      object-fit: cover;
+    }
+
+    .project-grid > div img:first-child {
+      height: clamp(130px, 16vw, 230px);
+    }
+
+    .project-grid > div img:last-child {
+      height: clamp(160px, 22vw, 340px);
+    }
+
+    .project-grid > img {
+      min-height: clamp(320px, 41vw, 590px);
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translate3d(var(--fade-x, 0), var(--fade-y, 30px), 0);
+      transition:
+        opacity var(--fade-duration, .7s) var(--ease) var(--fade-delay, 0s),
+        transform var(--fade-duration, .7s) var(--ease) var(--fade-delay, 0s);
+    }
+
+    .fade-in.is-visible {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+
+    @media (min-width: 640px) {
+      .portrait {
+        top: auto;
+        bottom: 0;
+        translate: -50% 0;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .nav {
+        gap: .7rem;
+        overflow-x: auto;
+        scrollbar-width: none;
+      }
+
+      .nav::-webkit-scrollbar {
+        display: none;
+      }
+
+      .hero-title {
+        font-size: 15vw;
+      }
+
+      .hero-bottom {
+        align-items: flex-start;
+        padding-bottom: 1.75rem;
+      }
+
+      .kicker {
+        max-width: 170px;
+      }
+
+      .deco {
+        opacity: .5;
+      }
+
+      .service {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .project-frame {
+        height: auto;
+        min-height: 0;
+        margin-bottom: 2rem;
+      }
+
+      .project-card,
+      .project-card[data-index="1"],
+      .project-card[data-index="2"] {
+        position: relative;
+        top: auto;
+      }
+
+      .project-top {
+        grid-template-columns: 1fr;
+        align-items: start;
+      }
+
+      .live-button {
+        width: fit-content;
+      }
+
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .hero-bottom {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      .contact-button {
+        width: 100%;
+      }
+
+      .section-title {
+        font-size: clamp(3rem, 16vw, 6rem);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+    }
   </style>
-</noscript>
-
 </head>
-
-<body class="portfolio-home" itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
-
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
-    </div>
-  </div>
-
-  <div class="site-meta">
-
-    <a href="/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">SiFL'Blog</h1>
-      <span class="logo-line-after"><i></i></span>
-    </a>
-  </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
-    </div>
-  </div>
-</div>
-
-
-
-
-<nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-about">
-
-    <a href="/aboutme/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
-
-  </li>
-        <li class="menu-item menu-item-categories">
-
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
-
-  </li>
-  </ul>
-</nav>
-
-
-
-
-</div>
-    </header>
-
-    
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
-
-
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-
-          <div class="content portfolio-landing">
-            
-  <div class="portfolio-shell" data-portfolio-home>
-    <section id="hero" class="portfolio-hero">
-      <nav class="portfolio-nav fade-in" aria-label="Landing navigation" data-y="-20" data-delay="0">
+<body>
+  <main class="page" id="top">
+    <section class="hero" aria-label="Hero">
+      <nav class="nav fade-in" aria-label="Primary navigation" style="--fade-y: -20px; --fade-delay: 0s;">
         <a href="#about">About</a>
         <a href="#services">Price</a>
         <a href="#projects">Projects</a>
         <a href="mailto:sifliang997@gmail.com">Contact</a>
       </nav>
 
-      <div class="portfolio-hero-title-wrap">
-        <h1 class="portfolio-hero-title hero-heading fade-in" data-y="40" data-delay="0.15">Hi, i'm SiFL</h1>
+      <div class="hero-title-wrap">
+        <h1 class="hero-title hero-heading fade-in" style="--fade-y: 40px; --fade-delay: .15s;">Hi, i'm SiFL</h1>
       </div>
 
-      <div class="portfolio-magnet portfolio-portrait fade-in" data-y="30" data-delay="0.6" data-padding="150" data-strength="3">
-        <img src="https://shrug-person-78902957.figma.site/_components/v2/d24c01ad3a56fc65e942a1f501eb73db42d7cf9a/Rectangle_40443.81459862.png" alt="3D creator portrait">
+      <div class="portrait magnet fade-in" data-padding="150" data-strength="3" style="--fade-y: 30px; --fade-delay: .6s;">
+        <img src="https://shrug-person-78902957.figma.site/_components/v2/d24c01ad3a56fc65e942a1f501eb73db42d7cf9a/Rectangle_40443.81459862.png" alt="3D portrait of a creator looking upward">
       </div>
 
-      <div class="portfolio-hero-bottom">
-        <p class="portfolio-kicker fade-in" data-y="20" data-delay="0.35">a creator driven by code, research, and unforgettable digital projects</p>
-        <a class="portfolio-contact fade-in" href="mailto:sifliang997@gmail.com" data-y="20" data-delay="0.5">Contact Me</a>
-      </div>
-    </section>
-
-    <section class="portfolio-marquee" aria-label="Selected motion references">
-      <div class="portfolio-marquee-row portfolio-marquee-row-one"></div>
-      <div class="portfolio-marquee-row portfolio-marquee-row-two"></div>
-    </section>
-
-    <section id="about" class="portfolio-about">
-      <img class="portfolio-deco portfolio-deco-moon fade-in" src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/moon_icon.11395d36.png" alt="" aria-hidden="true" data-x="-80" data-y="0" data-delay="0.1" data-duration="0.9">
-      <img class="portfolio-deco portfolio-deco-object fade-in" src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/p59_1.4659672e.png" alt="" aria-hidden="true" data-x="-80" data-y="0" data-delay="0.25" data-duration="0.9">
-      <img class="portfolio-deco portfolio-deco-lego fade-in" src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/lego_icon-1.703bb594.png" alt="" aria-hidden="true" data-x="80" data-y="0" data-delay="0.15" data-duration="0.9">
-      <img class="portfolio-deco portfolio-deco-group fade-in" src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/Group_134-1.2e04f3ce.png" alt="" aria-hidden="true" data-x="80" data-y="0" data-delay="0.3" data-duration="0.9">
-
-      <div class="portfolio-about-inner">
-        <h2 class="portfolio-section-title hero-heading fade-in" data-y="40">About me</h2>
-        <p class="portfolio-animated-text" data-text="With experience across CV, NLP, large model applications, and backend systems, i enjoy turning difficult ideas into useful, polished products. This site collects my notes, experiments, and projects as they grow."></p>
-        <a class="portfolio-contact portfolio-contact-about fade-in" href="/aboutme/" data-y="20" data-delay="0.35">About Me</a>
+      <div class="hero-bottom">
+        <p class="kicker fade-in" style="--fade-y: 20px; --fade-delay: .35s;">a 3d creator driven by crafting striking and unforgettable projects</p>
+        <a class="contact-button fade-in" href="mailto:sifliang997@gmail.com" style="--fade-y: 20px; --fade-delay: .5s;">Contact Me</a>
       </div>
     </section>
 
-    <section id="services" class="portfolio-services">
-      <h2 class="portfolio-section-title portfolio-section-title-dark fade-in" data-y="40">Services</h2>
-      <div class="portfolio-service-list">
-        <article class="portfolio-service fade-in" data-y="30" data-delay="0">
-          <span>01</span>
+    <section class="marquee" aria-label="Motion project previews">
+      <div class="marquee-row marquee-row-one"></div>
+      <div class="marquee-row marquee-row-two"></div>
+    </section>
+
+    <section class="about" id="about">
+      <img class="deco deco-moon fade-in" src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/moon_icon.11395d36.png" alt="" aria-hidden="true" style="--fade-x: -80px; --fade-y: 0; --fade-delay: .1s; --fade-duration: .9s;">
+      <img class="deco deco-object fade-in" src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/p59_1.4659672e.png" alt="" aria-hidden="true" style="--fade-x: -80px; --fade-y: 0; --fade-delay: .25s; --fade-duration: .9s;">
+      <img class="deco deco-lego fade-in" src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/lego_icon-1.703bb594.png" alt="" aria-hidden="true" style="--fade-x: 80px; --fade-y: 0; --fade-delay: .15s; --fade-duration: .9s;">
+      <img class="deco deco-group fade-in" src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/Group_134-1.2e04f3ce.png" alt="" aria-hidden="true" style="--fade-x: 80px; --fade-y: 0; --fade-delay: .3s; --fade-duration: .9s;">
+
+      <div class="about-inner">
+        <h2 class="section-title hero-heading fade-in" style="--fade-y: 40px;">About me</h2>
+        <p class="animated-text" data-text="With more than five years of experience in design, i focus on branding, web design, and user experience, i truly enjoy working with businesses that aim to stand out and present their best image. Let's build something incredible together!"></p>
+        <a class="contact-button fade-in" href="mailto:sifliang997@gmail.com" style="--fade-y: 20px; --fade-delay: .35s;">Contact Me</a>
+      </div>
+    </section>
+
+    <section class="services" id="services">
+      <h2 class="section-title section-title-dark fade-in" style="--fade-y: 40px;">Services</h2>
+      <div class="service-list">
+        <article class="service fade-in" style="--fade-y: 30px; --fade-delay: 0s;">
+          <span class="service-number">01</span>
           <div>
-            <h3>AI Applications</h3>
-            <p>Build practical CV, NLP, and large model workflows, from prototype notebooks to service-ready pipelines.</p>
+            <h3>3D Modeling</h3>
+            <p>Creation of detailed objects, characters, or environments tailored to specific client needs, ideal for games, products, and visualizations.</p>
           </div>
         </article>
-        <article class="portfolio-service fade-in" data-y="30" data-delay="0.1">
-          <span>02</span>
+        <article class="service fade-in" style="--fade-y: 30px; --fade-delay: .1s;">
+          <span class="service-number">02</span>
           <div>
-            <h3>Backend Systems</h3>
-            <p>Design APIs, data flows, and deployment foundations that keep experiments usable after the first demo.</p>
+            <h3>Rendering</h3>
+            <p>High-quality, photorealistic renders that showcase designs with custom lighting, textures, and materials to bring concepts to life.</p>
           </div>
         </article>
-        <article class="portfolio-service fade-in" data-y="30" data-delay="0.2">
-          <span>03</span>
+        <article class="service fade-in" style="--fade-y: 30px; --fade-delay: .2s;">
+          <span class="service-number">03</span>
           <div>
-            <h3>Linux Operations</h3>
-            <p>Document and automate server setup, networking, containers, and everyday fixes for reliable environments.</p>
+            <h3>Motion Design</h3>
+            <p>Dynamic animations and motion graphics that add energy and storytelling to brands, products, and digital experiences.</p>
           </div>
         </article>
-        <article class="portfolio-service fade-in" data-y="30" data-delay="0.3">
-          <span>04</span>
+        <article class="service fade-in" style="--fade-y: 30px; --fade-delay: .3s;">
+          <span class="service-number">04</span>
           <div>
-            <h3>Technical Writing</h3>
-            <p>Turn hard-won debugging notes into clear posts that other developers can use without retracing every step.</p>
+            <h3>Branding</h3>
+            <p>Crafting cohesive visual identities, from logos to full brand systems, that communicate a clear and memorable presence.</p>
           </div>
         </article>
-        <article class="portfolio-service fade-in" data-y="30" data-delay="0.4">
-          <span>05</span>
+        <article class="service fade-in" style="--fade-y: 30px; --fade-delay: .4s;">
+          <span class="service-number">05</span>
           <div>
             <h3>Web Design</h3>
-            <p>Create clean, responsive web pages with careful typography, motion, and attention to the small states.</p>
+            <p>Designing clean, modern, and conversion-focused websites with attention to layout, typography, and user experience.</p>
           </div>
         </article>
       </div>
     </section>
 
-    <section id="projects" class="portfolio-projects">
-      <h2 class="portfolio-section-title hero-heading fade-in" data-y="40">Project</h2>
-
-      <div class="portfolio-project-stack">
-        <article class="portfolio-project-frame">
-          <div class="portfolio-project-card" data-index="0" data-target-scale="0.94">
-            <div class="portfolio-project-top">
-              <span class="portfolio-project-number">01</span>
-              <span class="portfolio-project-label">Client</span>
+    <section class="projects" id="projects">
+      <h2 class="section-title hero-heading fade-in" style="--fade-y: 40px;">Project</h2>
+      <div class="project-stack">
+        <article class="project-frame">
+          <div class="project-card" data-index="0" data-target-scale=".94">
+            <div class="project-top">
+              <span class="project-number">01</span>
+              <span class="project-label">Client</span>
               <h3>Nextlevel Studio</h3>
-              <a class="portfolio-live" href="/archives/">Live Project</a>
+              <a class="live-button" href="#top">Live Project</a>
             </div>
-            <div class="portfolio-project-grid">
+            <div class="project-grid">
               <div>
                 <img src="https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055344_5eff02e0-87a5-41ce-b64f-eb08da8f33db.png&w=1280&q=85" alt="Nextlevel Studio interface detail">
-                <img src="https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055431_11d841fd-8b41-46a5-82e4-b04f2407a7d8.png&w=1280&q=85" alt="Nextlevel Studio 3D visual">
+                <img src="https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055431_11d841fd-8b41-46a5-82e4-b04f2407a7d8.png&w=1280&q=85" alt="Nextlevel Studio visual scene">
               </div>
               <img src="https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055451_e317bf2d-28d4-48cc-86b0-6f72f25b6327.png&w=1280&q=85" alt="Nextlevel Studio project hero">
             </div>
           </div>
         </article>
 
-        <article class="portfolio-project-frame">
-          <div class="portfolio-project-card" data-index="1" data-target-scale="0.97">
-            <div class="portfolio-project-top">
-              <span class="portfolio-project-number">02</span>
-              <span class="portfolio-project-label">Personal</span>
+        <article class="project-frame">
+          <div class="project-card" data-index="1" data-target-scale=".97">
+            <div class="project-top">
+              <span class="project-number">02</span>
+              <span class="project-label">Personal</span>
               <h3>Aura Brand Identity</h3>
-              <a class="portfolio-live" href="/categories/">Live Project</a>
+              <a class="live-button" href="#top">Live Project</a>
             </div>
-            <div class="portfolio-project-grid">
+            <div class="project-grid">
               <div>
                 <img src="https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055654_911201c5-36d9-4bc6-bac7-331adfce159f.png&w=1280&q=85" alt="Aura Brand Identity layout detail">
                 <img src="https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055723_5ceda0b8-d9c2-4665-b2e3-83ba19ba76d1.png&w=1280&q=85" alt="Aura Brand Identity product scene">
@@ -275,15 +728,15 @@
           </div>
         </article>
 
-        <article class="portfolio-project-frame">
-          <div class="portfolio-project-card" data-index="2" data-target-scale="1">
-            <div class="portfolio-project-top">
-              <span class="portfolio-project-number">03</span>
-              <span class="portfolio-project-label">Client</span>
+        <article class="project-frame">
+          <div class="project-card" data-index="2" data-target-scale="1">
+            <div class="project-top">
+              <span class="project-number">03</span>
+              <span class="project-label">Client</span>
               <h3>Solaris Digital</h3>
-              <a class="portfolio-live" href="/aboutme/">Live Project</a>
+              <a class="live-button" href="#top">Live Project</a>
             </div>
-            <div class="portfolio-project-grid">
+            <div class="project-grid">
               <div>
                 <img src="https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055759_963cfb0b-4bd1-4b0f-9d0a-09bd6cf95b2f.png&w=1280&q=85" alt="Solaris Digital interface detail">
                 <img src="https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_060108_438f781a-9846-4dcc-89ab-c4e6cb830f5b.png&w=1280&q=85" alt="Solaris Digital product scene">
@@ -294,247 +747,141 @@
         </article>
       </div>
     </section>
-  </div>
+  </main>
 
   <script>
-    (function() {
-      const root = document.querySelector('[data-portfolio-home]');
-      if (!root) return;
+    const marqueeImages = [
+      "https://motionsites.ai/assets/hero-space-voyage-preview-eECLH3Yc.gif",
+      "https://motionsites.ai/assets/hero-codenest-preview-Cgppc2qV.gif",
+      "https://motionsites.ai/assets/hero-vex-ventures-preview-BczMFIiw.gif",
+      "https://motionsites.ai/assets/hero-stellar-ai-v2-preview-DjvxjG3C.gif",
+      "https://motionsites.ai/assets/hero-asme-preview-B_nGDnTP.gif",
+      "https://motionsites.ai/assets/hero-transform-data-preview-Cx5OU29N.gif",
+      "https://motionsites.ai/assets/hero-vitara-preview-Cjz2QYyU.gif",
+      "https://motionsites.ai/assets/hero-terra-preview-BFjrCr7T.gif",
+      "https://motionsites.ai/assets/hero-skyelite-preview-DHaZIgUv.gif",
+      "https://motionsites.ai/assets/hero-aethera-preview-DknSlcTa.gif",
+      "https://motionsites.ai/assets/hero-designpro-preview-D8c5_een.gif",
+      "https://motionsites.ai/assets/hero-stellar-ai-preview-D3HL6bw1.gif",
+      "https://motionsites.ai/assets/hero-xportfolio-preview-D4A8maiC.gif",
+      "https://motionsites.ai/assets/hero-orbit-web3-preview-BXt4OttD.gif",
+      "https://motionsites.ai/assets/hero-nexora-preview-cx5HmUgo.gif",
+      "https://motionsites.ai/assets/hero-evr-ventures-preview-DZxeVFEX.gif",
+      "https://motionsites.ai/assets/hero-planet-orbit-preview-DWAP8Z1P.gif",
+      "https://motionsites.ai/assets/hero-new-era-preview-CocuDUm9.gif",
+      "https://motionsites.ai/assets/hero-wealth-preview-B70idl_u.gif",
+      "https://motionsites.ai/assets/hero-luminex-preview-CxOP7ce6.gif",
+      "https://motionsites.ai/assets/hero-celestia-preview-0yO3jXO8.gif"
+    ];
 
-      const marqueeImages = [
-        'https://motionsites.ai/assets/hero-space-voyage-preview-eECLH3Yc.gif',
-        'https://motionsites.ai/assets/hero-codenest-preview-Cgppc2qV.gif',
-        'https://motionsites.ai/assets/hero-vex-ventures-preview-BczMFIiw.gif',
-        'https://motionsites.ai/assets/hero-stellar-ai-v2-preview-DjvxjG3C.gif',
-        'https://motionsites.ai/assets/hero-asme-preview-B_nGDnTP.gif',
-        'https://motionsites.ai/assets/hero-transform-data-preview-Cx5OU29N.gif',
-        'https://motionsites.ai/assets/hero-vitara-preview-Cjz2QYyU.gif',
-        'https://motionsites.ai/assets/hero-terra-preview-BFjrCr7T.gif',
-        'https://motionsites.ai/assets/hero-skyelite-preview-DHaZIgUv.gif',
-        'https://motionsites.ai/assets/hero-aethera-preview-DknSlcTa.gif',
-        'https://motionsites.ai/assets/hero-designpro-preview-D8c5_een.gif',
-        'https://motionsites.ai/assets/hero-stellar-ai-preview-D3HL6bw1.gif',
-        'https://motionsites.ai/assets/hero-xportfolio-preview-D4A8maiC.gif',
-        'https://motionsites.ai/assets/hero-orbit-web3-preview-BXt4OttD.gif',
-        'https://motionsites.ai/assets/hero-nexora-preview-cx5HmUgo.gif',
-        'https://motionsites.ai/assets/hero-evr-ventures-preview-DZxeVFEX.gif',
-        'https://motionsites.ai/assets/hero-planet-orbit-preview-DWAP8Z1P.gif',
-        'https://motionsites.ai/assets/hero-new-era-preview-CocuDUm9.gif',
-        'https://motionsites.ai/assets/hero-wealth-preview-B70idl_u.gif',
-        'https://motionsites.ai/assets/hero-luminex-preview-CxOP7ce6.gif',
-        'https://motionsites.ai/assets/hero-celestia-preview-0yO3jXO8.gif'
-      ];
+    const buildMarquee = (selector, images) => {
+      const row = document.querySelector(selector);
+      if (!row) return;
+      row.innerHTML = images.concat(images, images).map((src, index) => (
+        `<img loading="lazy" src="${src}" alt="Motion project preview ${index + 1}">`
+      )).join("");
+    };
 
-      const buildRow = (row, images) => {
-        if (!row) return;
-        row.innerHTML = images.concat(images, images).map((src, index) => (
-          '<img loading="lazy" src="' + src + '" alt="Motion project preview ' + (index + 1) + '">'
-        )).join('');
-      };
+    buildMarquee(".marquee-row-one", marqueeImages.slice(0, 11));
+    buildMarquee(".marquee-row-two", marqueeImages.slice(11));
 
-      buildRow(root.querySelector('.portfolio-marquee-row-one'), marqueeImages.slice(0, 11));
-      buildRow(root.querySelector('.portfolio-marquee-row-two'), marqueeImages.slice(11));
+    const animatedText = document.querySelector(".animated-text");
+    if (animatedText) {
+      const text = animatedText.dataset.text || "";
+      animatedText.innerHTML = [...text].map((char) => {
+        const safe = char === " " ? "&nbsp;" : char.replace(/&/g, "&amp;").replace(/</g, "&lt;");
+        return `<span class="char">${safe}</span>`;
+      }).join("");
+    }
 
-      root.querySelectorAll('.fade-in').forEach((el) => {
-        const x = Number(el.dataset.x || 0);
-        const y = Number(el.dataset.y || 30);
-        const delay = Number(el.dataset.delay || 0);
-        const duration = Number(el.dataset.duration || 0.7);
-        el.style.opacity = '0';
-        el.style.transform = 'translate3d(' + x + 'px,' + y + 'px,0)';
-        el.style.transition = 'opacity ' + duration + 's cubic-bezier(.25,.1,.25,1) ' + delay + 's, transform ' + duration + 's cubic-bezier(.25,.1,.25,1) ' + delay + 's';
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-visible");
+        revealObserver.unobserve(entry.target);
       });
+    }, { rootMargin: "50px", threshold: 0 });
 
-      const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          entry.target.style.opacity = '1';
-          entry.target.style.transform = 'translate3d(0,0,0)';
-          revealObserver.unobserve(entry.target);
-        });
-      }, { rootMargin: '50px', threshold: 0 });
+    document.querySelectorAll(".fade-in").forEach((node) => revealObserver.observe(node));
 
-      root.querySelectorAll('.fade-in').forEach((el) => revealObserver.observe(el));
+    const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
+    const marquee = document.querySelector(".marquee");
+    const rowOne = document.querySelector(".marquee-row-one");
+    const rowTwo = document.querySelector(".marquee-row-two");
+    const chars = Array.from(document.querySelectorAll(".char"));
+    const cards = Array.from(document.querySelectorAll(".project-card"));
 
-      const animated = root.querySelector('.portfolio-animated-text');
-      if (animated) {
-        const text = animated.dataset.text || '';
-        animated.innerHTML = text.split('').map((char) => {
-          const safe = char === ' ' ? '&nbsp;' : char.replace(/&/g, '&amp;').replace(/</g, '&lt;');
-          return '<span class="portfolio-char">' + safe + '</span>';
-        }).join('');
+    const updateScrollEffects = () => {
+      if (marquee && rowOne && rowTwo) {
+        const rect = marquee.getBoundingClientRect();
+        const sectionTop = window.scrollY + rect.top;
+        const offset = (window.scrollY - sectionTop + window.innerHeight) * .3;
+        rowOne.style.transform = `translate3d(${offset - 200}px,0,0)`;
+        rowTwo.style.transform = `translate3d(${-(offset - 200)}px,0,0)`;
       }
 
-      const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
-      const marquee = root.querySelector('.portfolio-marquee');
-      const rowOne = root.querySelector('.portfolio-marquee-row-one');
-      const rowTwo = root.querySelector('.portfolio-marquee-row-two');
-      const projectCards = Array.from(root.querySelectorAll('.portfolio-project-card'));
-      const chars = Array.from(root.querySelectorAll('.portfolio-char'));
-
-      const updateScrollEffects = () => {
-        if (marquee && rowOne && rowTwo) {
-          const rect = marquee.getBoundingClientRect();
-          const sectionTop = window.scrollY + rect.top;
-          const offset = (window.scrollY - sectionTop + window.innerHeight) * 0.3;
-          rowOne.style.transform = 'translate3d(' + (offset - 200) + 'px,0,0)';
-          rowTwo.style.transform = 'translate3d(' + (-(offset - 200)) + 'px,0,0)';
-        }
-
-        if (animated && chars.length) {
-          const rect = animated.getBoundingClientRect();
-          const progress = clamp((window.innerHeight * 0.8 - rect.top) / (window.innerHeight * 0.6 + rect.height), 0, 1);
-          chars.forEach((char, index) => {
-            const local = clamp((progress - index / chars.length) * 6, 0, 1);
-            char.style.opacity = String(0.2 + local * 0.8);
-          });
-        }
-
-        projectCards.forEach((card) => {
-          const frame = card.parentElement;
-          const rect = frame.getBoundingClientRect();
-          const target = Number(card.dataset.targetScale || 1);
-          const progress = clamp((window.innerHeight - rect.top) / (window.innerHeight + rect.height), 0, 1);
-          const scale = 1 - (1 - target) * progress;
-          card.style.transform = 'scale(' + scale.toFixed(4) + ')';
+      if (animatedText && chars.length) {
+        const rect = animatedText.getBoundingClientRect();
+        const progress = clamp((window.innerHeight * .8 - rect.top) / (window.innerHeight * .6 + rect.height), 0, 1);
+        chars.forEach((char, index) => {
+          const local = clamp((progress - index / chars.length) * 6, 0, 1);
+          char.style.opacity = String(.2 + local * .8);
         });
+      }
+
+      cards.forEach((card) => {
+        const frame = card.parentElement;
+        const rect = frame.getBoundingClientRect();
+        const target = Number(card.dataset.targetScale || 1);
+        const progress = clamp((window.innerHeight - rect.top) / (window.innerHeight + rect.height), 0, 1);
+        const scale = 1 - (1 - target) * progress;
+        card.style.transform = `scale(${scale.toFixed(4)})`;
+      });
+    };
+
+    let ticking = false;
+    const requestUpdate = () => {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(() => {
+        updateScrollEffects();
+        ticking = false;
+      });
+    };
+
+    window.addEventListener("scroll", requestUpdate, { passive: true });
+    window.addEventListener("resize", requestUpdate);
+    updateScrollEffects();
+
+    document.querySelectorAll(".magnet").forEach((element) => {
+      const padding = Number(element.dataset.padding || 150);
+      const strength = Number(element.dataset.strength || 3);
+
+      const reset = () => {
+        element.style.transition = "transform .6s ease-in-out";
+        element.style.transform = "";
       };
 
-      const onScroll = () => window.requestAnimationFrame(updateScrollEffects);
-      window.addEventListener('scroll', onScroll, { passive: true });
-      window.addEventListener('resize', onScroll);
-      updateScrollEffects();
+      window.addEventListener("mousemove", (event) => {
+        const rect = element.getBoundingClientRect();
+        const inRange = event.clientX > rect.left - padding &&
+          event.clientX < rect.right + padding &&
+          event.clientY > rect.top - padding &&
+          event.clientY < rect.bottom + padding;
 
-      root.querySelectorAll('.portfolio-magnet').forEach((el) => {
-        const padding = Number(el.dataset.padding || 150);
-        const strength = Number(el.dataset.strength || 3);
+        if (!inRange) {
+          reset();
+          return;
+        }
 
-        const reset = () => {
-          el.style.transition = 'transform 0.6s ease-in-out';
-          el.style.transform = '';
-        };
-
-        window.addEventListener('mousemove', (event) => {
-          const rect = el.getBoundingClientRect();
-          const inRange = event.clientX > rect.left - padding &&
-            event.clientX < rect.right + padding &&
-            event.clientY > rect.top - padding &&
-            event.clientY < rect.bottom + padding;
-
-          if (!inRange) {
-            reset();
-            return;
-          }
-
-          const centerX = rect.left + rect.width / 2;
-          const centerY = rect.top + rect.height / 2;
-          const moveX = (event.clientX - centerX) / strength;
-          const moveY = (event.clientY - centerY) / strength;
-          el.style.transition = 'transform 0.3s ease-out';
-          el.style.transform = 'translate3d(' + moveX + 'px,' + moveY + 'px,0)';
-        }, { passive: true });
-      });
-    })();
-  </script>
-
-          </div>
-          
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        const moveX = (event.clientX - centerX) / strength;
+        const moveY = (event.clientY - centerY) / strength;
+        element.style.transition = "transform .3s ease-out";
+        element.style.transform = `translate3d(${moveX}px,${moveY}px,0)`;
+      }, { passive: true });
     });
-  }
-</script>
-
-        </div>
-          
-      </div>
-    </main>
-
-    <footer class="footer">
-      <div class="footer-inner">
-        
-
-        
-
-<div class="copyright">
-  
-  &copy; 
-  <span itemprop="copyrightYear">2026</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">SiFL</span>
-</div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
-  </div>
-
-        
-
-
-
-
-
-
-
-
-      </div>
-    </footer>
-  </div>
-
-  
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
-
-<script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/pisces.js"></script>
-
-
-<script src="/js/next-boot.js"></script>
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
-
+  </script>
 </body>
 </html>
