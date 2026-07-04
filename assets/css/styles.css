@@ -568,6 +568,34 @@ textarea {
   background: rgba(8, 12, 22, .62);
 }
 
+.video-panel {
+  min-height: 0;
+  aspect-ratio: 16 / 9;
+  background: #050914;
+}
+
+.project-video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: #050914;
+}
+
+.video-badge {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  padding: 8px 12px;
+  border: 1px solid rgba(184,199,255,.22);
+  border-radius: 999px;
+  color: #eef3ff;
+  background: rgba(5, 9, 20, .72);
+  font-size: 12px;
+  font-weight: 820;
+  backdrop-filter: blur(16px);
+}
+
 .lighting-stage {
   display: grid;
   min-height: 330px;
