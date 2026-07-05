@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Liang Sifang | AI / Computer Vision Research</title>
-  <meta name="description" content="Liang Sifang is a master's student in Artificial Intelligence at UCAS, working on generative vision models, controllable image editing, portrait lighting editing, sparse-view 3D Gaussian rendering, and multimodal evaluation.">
+  <meta name="description" content="Liang Sifang is a master's student in Artificial Intelligence at UCAS, working on image and video editing, controllable generation, multimodal understanding, and agent systems.">
   <meta property="og:title" content="Liang Sifang | AI / Computer Vision Research">
   <meta property="og:description" content="Research portfolio covering generative models, controllable image editing, sparse-view 3DGS, multimodal evaluation, projects, blog, and contact.">
   <meta property="og:type" content="website">
@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;450;500;600;650;700;750;800&family=Noto+Sans+SC:wght@400;500;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/styles.css">
+  <link rel="stylesheet" href="/assets/css/styles.css?v=20260705-research-terms">
 </head>
 <body>
   <header class="site-header">
@@ -31,96 +31,137 @@
   </header>
 
   <main>
-    <section class="hero">
-      <div class="container hero-grid">
-        <div class="reveal">
-          <span class="eyebrow">AI / Computer Vision Researcher</span>
-          <h1>Generative vision systems with controllable editing.</h1>
-          <p class="lead">I am Liang Sifang, a master's student in Artificial Intelligence at the University of Chinese Academy of Sciences. My work sits between research and engineering, with interests in generative models, portrait lighting editing, sparse-view 3D Gaussian rendering, and multimodal evaluation.</p>
-          <div class="tag-row" aria-label="Research interests">
-            <span class="tag">Generative Models</span>
-            <span class="tag">Controllable Image Editing</span>
-            <span class="tag">Portrait Lighting Editing</span>
-            <span class="tag">Sparse-view 3DGS</span>
-            <span class="tag">Multimodal Evaluation</span>
+    <section class="profile-hero" id="bio">
+      <div class="container academic-profile">
+        <aside class="profile-aside reveal" aria-label="Liang Sifang profile summary">
+          <div class="profile-photo-frame">
+            <img class="profile-photo" src="/assets/images/profile/liang-sifang-official.jpg" alt="Portrait of Liang Sifang">
           </div>
-          <div class="actions">
-            <a class="button primary" href="/projects/">View Projects</a>
-            <a class="button" href="/blog/">Read Blog</a>
-            <a class="button" href="/cv/">View CV</a>
-            <a class="button subtle" href="https://github.com/baller">GitHub</a>
+          <h1 class="profile-name">Liang Sifang</h1>
+          <p class="profile-role">M.Eng. student in Artificial Intelligence<br>HIAS, University of Chinese Academy of Sciences</p>
+          <div class="profile-meta-list">
+            <span class="meta-row">
+              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 21s7-5.4 7-12a7 7 0 1 0-14 0c0 6.6 7 12 7 12Z"/><circle cx="12" cy="9" r="2.4"/></svg>
+              <span>Beijing / Hangzhou, China</span>
+            </span>
+            <a class="meta-row" href="mailto:liangsifang24@mails.ucas.edu.cn">
+              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 6.5h16v11H4z"/><path d="m4.6 7.2 7.4 6 7.4-6"/></svg>
+              <span>liangsifang24@mails.ucas.edu.cn</span>
+            </a>
+            <a class="meta-row" href="https://github.com/baller">
+              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 2.7a9.3 9.3 0 0 0-3 18.1c.5.1.7-.2.7-.5v-1.8c-2.8.6-3.4-1.2-3.4-1.2-.5-1.1-1.1-1.4-1.1-1.4-.9-.6.1-.6.1-.6 1 0 1.6 1.1 1.6 1.1.9 1.6 2.5 1.1 3.1.8.1-.7.4-1.1.7-1.4-2.3-.3-4.6-1.1-4.6-5a3.9 3.9 0 0 1 1-2.7c-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.8 1a9.5 9.5 0 0 1 5 0c1.9-1.3 2.8-1 2.8-1 .5 1.4.2 2.4.1 2.7a3.9 3.9 0 0 1 1 2.7c0 3.9-2.4 4.7-4.6 5 .4.3.7.9.7 1.8v2.7c0 .3.2.6.7.5A9.3 9.3 0 0 0 12 2.7Z"/></svg>
+              <span>github.com/baller</span>
+            </a>
           </div>
-        </div>
-        <div class="hero-visual reveal" aria-label="Abstract research system visualization">
-          <div class="orbital"></div>
-          <div class="orbital"></div>
-          <div class="orbital"></div>
-          <div class="signal-core">AI</div>
-          <div class="research-chip chip-a">Editing Control<small>identity, background, strength</small></div>
-          <div class="research-chip chip-b">3DGS<small>sparse views to novel views</small></div>
-          <div class="research-chip chip-c">Evaluation<small>multimodal scoring loops</small></div>
-          <div class="research-chip chip-d">Vision Models<small>diffusion, flow matching</small></div>
-        </div>
-      </div>
-    </section>
+          <div class="profile-internships" aria-label="Internship experience summary">
+            <p class="aside-section-label">Internship</p>
+            <a class="internship-mini-card" href="#experience">
+              <img src="/assets/images/logos/vivo-logo.jpeg" alt="VIVO logo">
+              <span>
+                <strong>VIVO</strong>
+                <em>ALGORITHM INTERN</em>
+                <small>2025.10 to 2026.04</small>
+              </span>
+            </a>
+            <a class="internship-mini-card" href="#experience">
+              <img src="/assets/images/logos/huawei-logo.jpeg" alt="Huawei logo">
+              <span>
+                <strong>HUAWEI</strong>
+                <em>AI ENGINEERING INTERN</em>
+                <small>2025.06 to 2025.09</small>
+              </span>
+            </a>
+            <a class="internship-mini-card" href="#experience">
+              <span class="logo-fallback" aria-hidden="true">AI</span>
+              <span>
+                <strong>AVOLUTION.AI</strong>
+                <em>ALGORITHM INTERN</em>
+                <small>2024.03 to 2024.06</small>
+              </span>
+            </a>
+          </div>
+          <div class="profile-links" aria-label="Primary profile links">
+            <a href="/projects/">Projects</a>
+            <a href="/blog/">Blog</a>
+            <a href="/cv/">CV</a>
+          </div>
+        </aside>
 
-    <section class="section compact" id="about">
-      <div class="container">
-        <div class="section-head reveal">
-          <div>
-            <p class="section-kicker">About</p>
-            <h2>Research taste, engineering discipline.</h2>
-          </div>
-          <p>我目前是中国科学院大学人工智能方向硕士研究生，本科毕业于杭州师范大学计算机科学与技术专业。我的兴趣集中在生成式视觉模型、可控图像编辑、人像光影编辑、稀疏视角 3D Gaussian Splatting 和多模态评估，关注如何把模型能力做成可验证、可控制、可部署的系统。</p>
-        </div>
-        <div class="grid-3">
-          <article class="card reveal">
-            <h3>Research Focus</h3>
-            <p>Controllable image generation and editing, especially identity-preserving portrait lighting changes and structured control signals.</p>
-          </article>
-          <article class="card reveal">
-            <h3>3D Vision</h3>
-            <p>Sparse-view reconstruction and novel view rendering with 3D Gaussian Splatting, depth priors, and multi-camera systems.</p>
-          </article>
-          <article class="card reveal">
-            <h3>Systems</h3>
-            <p>Data construction, model training, evaluation workflow, web interfaces, and agent-based applications for research prototypes.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <div class="section-head reveal">
-          <div>
-            <p class="section-kicker">Education</p>
-            <h2>Academic path.</h2>
-          </div>
-          <p>Education is shown as context, not as a dense résumé block. Awards are kept lightweight so the research work stays primary.</p>
-        </div>
-        <div class="timeline">
-          <article class="timeline-item reveal">
-            <div class="timeline-time">2024.09 to present</div>
-            <div>
-              <h3>University of Chinese Academy of Sciences</h3>
-              <p class="meta">M.Eng. in Artificial Intelligence</p>
-              <p>Graduate study focused on AI and computer vision, with project work around controllable visual generation, model evaluation, and 3D rendering.</p>
+        <div class="profile-main">
+          <div class="bio-panel reveal">
+            <span class="eyebrow">AI / Computer Vision Researcher</span>
+            <p class="bio-copy">Hi, I am <strong>Liang Sifang</strong>, a master's student in Artificial Intelligence at the Hangzhou Institute for Advanced Study, University of Chinese Academy of Sciences. My research focuses on <strong>image and video editing</strong>, <strong>controllable generation</strong>, multimodal understanding, and agent systems.</p>
+            <p class="bio-copy">I am interested in vision systems that expose controllable generation interfaces, preserve semantic consistency across edits, and connect perception, reasoning, and tool use in practical multimodal workflows.</p>
+            <div class="tag-row compact-tags" aria-label="Research interests">
+              <span class="tag">Image / Video Editing</span>
+              <span class="tag">Controllable Generation</span>
+              <span class="tag">Multimodal Understanding</span>
+              <span class="tag">Agent Systems</span>
             </div>
-          </article>
-          <article class="timeline-item reveal">
-            <div class="timeline-time">2020.09 to 2024.06</div>
-            <div>
-              <h3>Hangzhou Normal University</h3>
-              <p class="meta">B.Eng. in Computer Science and Technology</p>
-              <p>Undergraduate training in computer science, software engineering, deep learning, and applied AI systems.</p>
+            <div class="actions mini-action-row">
+              <a class="button primary" href="/projects/">View Projects</a>
+              <a class="button" href="/blog/">Read Blog</a>
+              <a class="button subtle" href="https://github.com/baller">GitHub</a>
             </div>
-          </article>
+          </div>
+
+          <section class="profile-block reveal" aria-labelledby="background-heading">
+            <div class="profile-section-title">
+              <h2 id="background-heading">Background</h2>
+              <span>Education</span>
+            </div>
+            <div class="background-list">
+              <article class="background-item">
+                <div class="school-seal logo-seal">
+                  <img src="/assets/images/logos/ucas-logo.webp" alt="University of Chinese Academy of Sciences logo">
+                </div>
+                <div>
+                  <h3>M.Eng. in Artificial Intelligence. 2024.09 to present</h3>
+                  <p><a class="education-link" href="http://hias.ucas.ac.cn/">Hangzhou Institute for Advanced Study</a></p>
+                  <p><a class="education-link" href="https://www.ucas.ac.cn/">University of Chinese Academy of Sciences</a></p>
+                </div>
+              </article>
+              <article class="background-item">
+                <div class="school-seal logo-seal warm">
+                  <img src="/assets/images/logos/hznu-logo.jpg" alt="Hangzhou Normal University logo">
+                </div>
+                <div>
+                  <h3>B.Eng. in Computer Science and Technology. 2020.09 to 2024.06</h3>
+                  <p><a class="education-link" href="https://hise.hznu.edu.cn/">School of Information Science and Technology</a></p>
+                  <p><a class="education-link" href="https://www.hznu.edu.cn/">Hangzhou Normal University</a></p>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <section class="profile-block reveal" id="research" aria-labelledby="research-heading">
+            <div class="profile-section-title">
+              <h2 id="research-heading">Research</h2>
+              <span>Selected directions</span>
+            </div>
+            <div class="research-list">
+              <a class="research-row" href="/projects/#portrait-lighting">
+                <span>01</span>
+                <strong>Controllable Image and Video Editing</strong>
+                <em>semantic consistency, identity preservation, instruction-guided editing</em>
+              </a>
+              <a class="research-row" href="/projects/#wavesplat">
+                <span>02</span>
+                <strong>Controllable Generation</strong>
+                <em>conditioning, edit strength control, generative model alignment</em>
+              </a>
+              <a class="research-row" href="/projects/#supertravelagent">
+                <span>03</span>
+                <strong>Agent Systems</strong>
+                <em>task decomposition, tool use, MCP service orchestration</em>
+              </a>
+            </div>
+          </section>
         </div>
       </div>
     </section>
 
-    <section class="section compact">
+    <section class="section compact" id="experience">
       <div class="container">
         <div class="section-head reveal">
           <div>
@@ -131,17 +172,17 @@
         </div>
         <div class="grid-2">
           <article class="card reveal">
-            <p class="meta">VIVO, Large-model imaging algorithm internship, 2025.10 to 2026.04</p>
+            <p class="meta">VIVO, algorithm intern, 2025.10 to 2026.04</p>
             <h3>Portrait lighting and image editing models</h3>
             <p>Worked on large-model image editing for lighting effects such as hair light, Tyndall light, side light, sunset light, and slit light, with emphasis on identity preservation, background consistency, and controllable strength.</p>
           </article>
           <article class="card reveal">
-            <p class="meta">Huawei, AI engineering internship, 2025.06 to 2025.09</p>
+            <p class="meta">HUAWEI, AI engineering intern, 2025.06 to 2025.09</p>
             <h3>LLM-based frontend situation analysis agent</h3>
             <p>Explored agent workflows for frontend state analysis, report generation, and model-assisted reasoning, with attention to engineering reliability and task decomposition.</p>
           </article>
           <article class="card reveal">
-            <p class="meta">Hangzhou Normal University, AIGC algorithm internship, 2024.03 to 2024.06</p>
+            <p class="meta">AVOLUTION.AI, algorithm intern, 2024.03 to 2024.06</p>
             <h3>AIGC data engineering and model evaluation</h3>
             <p>Participated in AIGC data construction, model training support, and evaluation processes for multimodal and generative tasks.</p>
           </article>
