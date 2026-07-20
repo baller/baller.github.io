@@ -4,16 +4,16 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Projects | Liang Sifang</title>
-  <meta name="description" content="Selected AI and computer vision projects by Liang Sifang, including portrait lighting editing, sparse-view 3D Gaussian rendering, and SuperTravelAgent.">
+  <meta name="description" content="Selected personal projects by Liang Sifang, including SuperTravelAgent and developer tools.">
   <meta property="og:title" content="Projects | Liang Sifang">
-  <meta property="og:description" content="Research projects in controllable image editing, 3D Gaussian rendering, multimodal evaluation, and multi-agent travel planning.">
+  <meta property="og:description" content="Selected agent systems and developer tools by Liang Sifang.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://baller.github.io/projects/">
   <link rel="canonical" href="https://baller.github.io/projects/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;450;500;600;650;700;750;800&family=Noto+Sans+SC:wght@400;500;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/styles.css?v=20260705-zh-toggle">
+  <link rel="stylesheet" href="/assets/css/styles.css?v=20260710-content">
 </head>
 <body>
   <header class="site-header">
@@ -34,101 +34,19 @@
   <main>
     <section class="page-hero">
       <div class="container reveal">
-        <span class="eyebrow">Selected Projects</span>
-        <h1>Research cards with systems-level context.</h1>
-        <p>These projects are organized around research questions and implementation systems, not résumé bullets. Publicly unavailable research artifacts are represented by abstract visuals rather than fabricated results.</p>
-      </div>
-    </section>
-
-    <section class="section compact" id="portrait-lighting">
-      <div class="container">
-        <article class="project-card featured reveal">
-          <div>
-            <span class="project-index">01 / Controllable Portrait Lighting Editing</span>
-            <h3>Identity-preserving portrait lighting control</h3>
-            <p>This project explores controllable portrait lighting editing for effects such as hair light, Tyndall light, side light, sunset light, and slit light. The research direction emphasizes identity preservation, background consistency, controllable lighting strength, and robust instruction-following for diffusion or flow matching based editing systems.</p>
-            <ul class="compact-list">
-              <li>Design lighting edit tasks where the subject identity and background should remain stable.</li>
-              <li>Use strength control as an explicit interface, from S0 to S1.0, instead of a binary edit/no-edit setting.</li>
-              <li>Prepare evaluation views for prompt adherence, artifact control, identity similarity, and background preservation.</li>
-            </ul>
-            <div class="tag-row">
-              <span class="tag">Portrait Editing</span>
-              <span class="tag">Lighting Control</span>
-              <span class="tag">Diffusion</span>
-              <span class="tag">Flow Matching</span>
-              <span class="tag">FLUX</span>
-            </div>
-          </div>
-          <div class="visual-panel">
-            <div class="lighting-stage">
-              <div class="portrait-shape" aria-hidden="true"></div>
-            </div>
-            <div class="strength-strip">
-              <span data-light-level="0">S0</span>
-              <span data-light-level=".25">S0.25</span>
-              <span data-light-level=".5">S0.5</span>
-              <span data-light-level=".75">S0.75</span>
-              <span data-light-level="1">S1.0</span>
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="section compact" id="wavesplat">
-      <div class="container">
-        <article class="project-card reveal">
-          <div>
-            <span class="project-index">02 / Sparse-view 3D Gaussian Rendering</span>
-            <h3>WaveSplat-style sparse-view novel view synthesis</h3>
-            <p>This research direction focuses on sparse-view 3D Gaussian rendering for indoor and remote telepresence settings. The core idea is to move from limited camera observations to stable novel view rendering with depth priors and Gaussian field optimization.</p>
-            <ul class="compact-list">
-              <li>Model sparse multi-camera observations as the starting point for scene reconstruction.</li>
-              <li>Use geometry and depth priors to reduce ambiguity in under-constrained indoor scenes.</li>
-              <li>Represent the final system as a rendering pipeline that can be evaluated with novel target viewpoints.</li>
-            </ul>
-            <div class="tag-row">
-              <span class="tag">3DGS</span>
-              <span class="tag">Sparse-view</span>
-              <span class="tag">Depth Prior</span>
-              <span class="tag">Novel View</span>
-              <span class="tag">Telepresence</span>
-            </div>
-          </div>
-          <div class="visual-panel pipeline">
-            <div class="pipeline-row">
-              <div class="pipeline-box"><strong>Input Views</strong><span>Sparse cameras provide limited scene evidence.</span></div>
-              <div class="arrow"></div>
-              <div class="pipeline-box"><strong>Depth Prior</strong><span>Geometry guidance improves stable optimization.</span></div>
-              <div class="arrow"></div>
-              <div class="pipeline-box"><strong>Render</strong><span>Gaussian primitives synthesize novel views.</span></div>
-            </div>
-            <div class="gaussian-field" aria-hidden="true"></div>
-          </div>
-        </article>
+        <span class="eyebrow">Selected Personal Projects</span>
+        <h1>Projects</h1>
+        <p>Detailed case studies will be added after each project's motivation, ownership, implementation, and outcomes have been reviewed.</p>
       </div>
     </section>
 
     <section class="section compact" id="supertravelagent">
       <div class="container">
-        <article class="project-card featured reveal">
+        <article class="project-card reveal">
           <div>
-            <span class="project-index">03 / SuperTravelAgent</span>
-            <h3>Multi-agent travel planning system</h3>
-            <p>SuperTravelAgent is a multi-agent travel planning system that decomposes complex travel needs into manageable planning tasks. Based on the public repository, it integrates a React + TypeScript interface, FastAPI backend, real-time WebSocket communication, MCP service management, and tool access for maps, train tickets, social content, web search, file handling, and PowerPaint-style image editing.</p>
-            <ul class="compact-list">
-              <li>Six-agent workflow: task analysis, decomposition, planning, execution, observation, and summarization.</li>
-              <li>MCP service matrix covering Baidu Maps, 12306 train tickets, Xiaohongshu content, real-time search, filesystem tools, HTTP tools, and PowerPaint.</li>
-              <li>Modern web application architecture with Ant Design UI, session management, model configuration, and real-time reasoning visibility.</li>
-            </ul>
-            <div class="tag-row">
-              <span class="tag">React + TypeScript</span>
-              <span class="tag">FastAPI</span>
-              <span class="tag">WebSocket</span>
-              <span class="tag">MCP</span>
-              <span class="tag">Multi-agent</span>
-            </div>
+            <span class="project-index">01 / Agent Systems</span>
+            <h3>SuperTravelAgent</h3>
+            <p>Detailed case study in preparation.</p>
             <div class="project-links">
               <a class="text-link" href="https://github.com/baller/SuperTravelAgent">GitHub repository</a>
             </div>
@@ -137,23 +55,18 @@
             <video class="project-video" autoplay muted loop playsinline preload="metadata" poster="/assets/images/supertravelagent/index.png" aria-label="SuperTravelAgent Remotion promotional video">
               <source src="/assets/videos/supertravelagent-promo-map-v2.mp4" type="video/mp4">
             </video>
-            <div class="video-badge">30s Remotion promo · 1920x1080</div>
           </div>
         </article>
-        <div class="screenshot-grid reveal">
-          <img src="/assets/images/supertravelagent/index.png" alt="SuperTravelAgent main interface screenshot">
-          <img src="/assets/images/supertravelagent/details.png" alt="SuperTravelAgent feature details screenshot">
-        </div>
       </div>
     </section>
 
     <section class="section compact">
       <div class="container">
-        <div class="card reveal">
-          <p class="section-kicker">Research Output</p>
-          <h2>Publication-ready structure without false claims.</h2>
-          <p>Selected research projects are being prepared as manuscripts. Future entries can add PDF, code, project page, BibTeX, arXiv, and conference status when those materials are real and public.</p>
-        </div>
+        <article class="card experience-card reveal">
+          <p class="meta">02 / Developer Tools</p>
+          <h3>ZSH Command Assistant</h3>
+          <p class="placeholder-copy">Detailed case study in preparation.</p>
+        </article>
       </div>
     </section>
   </main>
@@ -165,6 +78,6 @@
     </div>
   </footer>
   <script src="/assets/js/main.js"></script>
-  <script src="/assets/js/i18n.js?v=20260705-zh"></script>
+  <script src="/assets/js/i18n.js?v=20260714-no-internship-dates"></script>
 </body>
 </html>
